@@ -1,9 +1,18 @@
 const pigLatin = (string) => {
-  let addOn = string.charAt(0).concat("ay");
-
-  return string.slice(1).concat(addOn);
+  if (string.length > 1) {
+    return string.slice(1) + string[0] + "ay";
+  }
+  return string + "ay";
 };
 
-process.argv.slice(2).forEach((arg) => {
-  console.log(pigLatin(arg));
-});
+const main = () => {
+  args = process.argv.slice(2);
+
+  const pigLatinWords = args.map(pigLatin);
+
+  const pigLatinSentence = pigLatinWords.join(" ");
+
+  console.log(pigLatinSentence);
+};
+
+main();
