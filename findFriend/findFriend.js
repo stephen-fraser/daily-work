@@ -31,3 +31,25 @@ const contacts = [
     friends: ["Abbott", "Laurel"],
   },
 ];
+
+const findFriend = (contacts, name, someKey) => {
+  const contactPresent = contacts.find((contact) => contact.name === name);
+
+  if (contactPresent && contactPresent[someKey]) {
+    const output = {
+      name: contactPresent.name,
+      [someKey]: contactPresent[someKey],
+    };
+    return console.log(output);
+  } else {
+    return console.log("Not Found");
+  }
+};
+
+findFriend(contacts, "Abbott", "phone");
+findFriend(contacts, "Costello", "birthday");
+
+// findFriend(contacts, "Abbott", "phone") should return { name: "Costello", phone: "767 676 7676" }
+// findFriend(contacts, "Buster", "email") should return { name: "Hardy", email: "hardy@hardyharhar.com" }
+// findFriend(contacts, "Bob", "phone") should return "Not found"
+// findFriend(contacts, "Costello", "birthday") should return "Not found" (but if Costello's first friend, Abbott, did have a birthday field, then it should work and return that their name and birthday information)
